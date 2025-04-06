@@ -126,7 +126,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg">Location</h4>
-                  <p className="text-text-light">San Francisco, CA</p>
+                  <p className="text-text-light">TP. Ho Chi Minh, VN</p>
                 </div>
               </div>
 

@@ -41,8 +41,8 @@ export default function Projects() {
         "A modern, responsive portfolio website showcasing my skills and projects.",
       image: "/porfolio.png",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-      github: "https://github.com/derder3010/portfolio",
-      demo: "https://derder3010.vercel.app",
+      github: "https://github.com/derder3010/porfolio",
+      demo: "https://github.com/derder3010/porfolio",
     },
     {
       title: "Landing Page",

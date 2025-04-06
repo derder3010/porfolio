@@ -13,13 +13,79 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Der Der | Fullstack Developer",
+  title: "Duy Tran | Fullstack Developer",
   description:
-    "Personal portfolio of Der Der, a Fullstack Developer specializing in modern web applications.",
-  keywords:
-    "fullstack developer, web developer, javascript, react, nextjs, portfolio",
-  authors: [{ name: "Der Der" }],
-  creator: "Der Der",
+    "Personal portfolio of Duy Tran, a Fullstack Developer specializing in modern web applications with React, Next.js, and TypeScript.",
+  keywords: [
+    "fullstack developer",
+    "web developer",
+    "javascript",
+    "typescript",
+    "react",
+    "nextjs",
+    "node.js",
+    "portfolio",
+    "software engineer",
+    "frontend developer",
+    "backend developer",
+    "responsive design",
+    "web applications",
+  ],
+  authors: [{ name: "Duy Tran", url: "https://duytran.blog" }],
+  creator: "Duy Tran",
+  publisher: "Duy Tran",
+  formatDetection: {
+    email: false,
+    telephone: false,
+    address: false,
+  },
+  metadataBase: new URL("https://duytran.blog"), // Replace with your actual domain
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://duytran.blog",
+    title: "Duy Tran | Fullstack Developer",
+    description:
+      "Personal portfolio of Duy Tran, a Fullstack Developer specializing in modern web applications.",
+    siteName: "Duy Tran Portfolio",
+    images: [
+      {
+        url: "https://duytran.blog/og-image.jpg", // Replace with your actual OG image path
+        width: 1200,
+        height: 630,
+        alt: "Duy Tran - Fullstack Developer Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Duy Tran | Fullstack Developer",
+    description:
+      "Personal portfolio of Duy Tran, a Fullstack Developer specializing in modern web applications.",
+    creator: "@duytrander", // Replace with your actual Twitter handle
+    images: ["https://duytran.blog/twitter-image.jpg"], // Replace with your actual Twitter image
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code", // Replace with your actual verification code
+  },
+  category: "technology",
 };
 
 export default function RootLayout({

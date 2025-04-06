@@ -14,7 +14,7 @@ export default function About() {
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     const currentRef = sectionRef.current;
@@ -165,7 +165,7 @@ export default function About() {
 
               <div className="mt-6">
                 <a
-                  href="/resume.pdf"
+                  href="/cv.pdf"
                   download
                   className=" bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-md transition-colors duration-300 shadow-md hover:shadow-lg flex items-center justify-center max-w-fit"
                 >

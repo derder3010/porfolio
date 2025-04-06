@@ -135,12 +135,15 @@ export default function Experience() {
               } md:w-[45%] ${isVisible ? "animate-slide-up" : "opacity-0"}`}
               style={{ animationDelay: `${0.2 + idx * 0.1}s` }}
             >
-              {/* Timeline dot - fixed for both mobile and desktop */}
+              {/* Timeline dot - positioned exactly on the timeline for both mobile and desktop */}
               <div
                 className={`absolute top-6 bg-primary z-10 w-5 h-5 rounded-full border-4 border-white
                 ${
-                  idx % 2 === 0 ? "md:right-[-10.5px]" : "md:left-[-10.5px]"
-                } left-8 md:left-auto transform md:translate-x-0 -translate-x-1/2`}
+                  idx % 2 === 0
+                    ? "md:left-[calc(100%+12px)] md:right-auto"
+                    : "md:right-[calc(100%+12px)] md:left-auto"
+                } 
+                left-8 md:translate-x-0 -translate-x-1/2`}
               ></div>
 
               <div
