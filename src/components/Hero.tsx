@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-// Removed unused Link import
 import { TypeAnimation } from "react-type-animation";
 
 export default function Hero() {
@@ -15,7 +14,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center pt-16 pb-24 relative"
+      className="min-h-screen flex flex-col justify-center pt-16 pb-24 bg-white"
     >
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-10">
         <div
@@ -24,10 +23,10 @@ export default function Hero() {
           }`}
           style={{ animationDelay: "0.2s" }}
         >
-          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4">
-            Hi, I&apos;m <span className="text-primary">Duy Tran</span>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-mono font-bold mb-4">
+            Hi, I&apos;m <span className="text-black">Duy Tran</span>
           </h1>
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-medium mb-6 text-secondary">
+          <h2 className="text-xl md:text-2xl font-mono mb-6 bg-gray-100 inline-block px-2 border border-black">
             <TypeAnimation
               sequence={[
                 "Fullstack Developer",
@@ -41,17 +40,23 @@ export default function Hero() {
               repeat={Infinity}
             />
           </h2>
-          <p className="text-base md:text-lg text-text-light mb-8 max-w-lg mx-auto md:mx-0">
+          <p className="text-base md:text-lg mb-8 max-w-lg mx-auto md:mx-0 font-mono leading-relaxed">
             Building modern web applications with cutting-edge technologies.
             Passionate about creating elegant, efficient solutions to complex
             problems.
           </p>
           <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-            <a href="#contact" className="btn-primary">
-              Get In Touch
+            <a
+              href="#contact"
+              className="bg-black text-white px-6 py-3 font-mono border-2 border-black hover:bg-gray-900 transition-colors"
+            >
+              GET IN TOUCH
             </a>
-            <a href="#projects" className="btn-outline">
-              View My Work
+            <a
+              href="#projects"
+              className="bg-white border-2 border-black text-black px-6 py-3 font-mono hover:bg-gray-100 transition-colors"
+            >
+              VIEW MY WORK
             </a>
           </div>
           <div className="flex mt-8 gap-6 justify-center md:justify-start">
@@ -59,7 +64,7 @@ export default function Hero() {
               href="https://github.com/derder3010"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-800 hover:text-primary transition-colors"
+              className="border border-black p-2 hover:bg-gray-100 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +80,7 @@ export default function Hero() {
               href="https://www.linkedin.com/in/duytduc/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-800 hover:text-primary transition-colors"
+              className="border border-black p-2 hover:bg-gray-100 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -87,22 +92,6 @@ export default function Hero() {
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
               </svg>
             </a>
-            {/* <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-800 hover:text-primary transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-              </svg>
-            </a> */}
           </div>
         </div>
         <div
@@ -111,7 +100,7 @@ export default function Hero() {
           }`}
           style={{ animationDelay: "0.4s" }}
         >
-          <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary">
+          <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 border-4 border-black">
             <Image
               src="/duytran.jpg"
               alt="Der Der - Fullstack Developer"
@@ -124,9 +113,12 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="hidden md:block absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a href="#about" className="flex flex-col items-center text-text-light">
-          <span className="mb-2">Scroll Down</span>
+      <div className="hidden md:block absolute bottom-10 left-1/2 transform -translate-x-1/2">
+        <a
+          href="#about"
+          className="flex flex-col items-center font-mono border border-black p-2 hover:bg-gray-100 transition-colors"
+        >
+          <span className="mb-2">SCROLL DOWN</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -145,8 +137,11 @@ export default function Hero() {
 
       {/* Mobile scroll indicator */}
       <div className="flex md:hidden justify-center mt-12">
-        <a href="#about" className="flex flex-col items-center text-text-light">
-          <span className="mb-2">Scroll Down</span>
+        <a
+          href="#about"
+          className="flex flex-col items-center font-mono border border-black p-2 hover:bg-gray-100 transition-colors"
+        >
+          <span className="mb-2">SCROLL DOWN</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -157,7 +152,6 @@ export default function Hero() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="animate-bounce"
           >
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>

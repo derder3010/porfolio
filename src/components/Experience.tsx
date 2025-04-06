@@ -1,7 +1,3 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-
 interface ExperienceItem {
   title: string;
   company: string;
@@ -12,9 +8,6 @@ interface ExperienceItem {
 }
 
 export default function Experience() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
   const experiences: ExperienceItem[] = [
     {
       title: "Freelance Fullstack Developer",
@@ -44,7 +37,7 @@ export default function Experience() {
     {
       title: "Fullstack Developer",
       company: "Rizerssoft Solutions Inc.",
-      location: "Austin, TX",
+      location: "TP. Ho Chi Minh, VN",
       period: "Mar 2023 - Present",
       description: [
         "Developed and maintained multiple client web applications with focus on performance and accessibility",
@@ -78,7 +71,7 @@ export default function Experience() {
     {
       title: "Web Development Intern",
       company: "Azoda Technology Joint Stock Company",
-      location: "Saigon, Vietnam",
+      location: "TP. Ho Chi Minh, VN",
       period: "Jan 2022 - May 2022",
       description: [
         "Assisted in building and maintaining company website and client projects",
@@ -90,108 +83,56 @@ export default function Experience() {
     },
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentRef = sectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
-
   return (
-    <section id="experience" ref={sectionRef} className="py-20 bg-accent">
+    <section
+      id="experience"
+      className="py-20 bg-gray-100 border-t border-b border-black"
+    >
       <div className="container mx-auto px-4">
-        <h2 className="section-heading">Work Experience</h2>
+        <h2 className="text-3xl font-mono font-bold mb-12 text-center uppercase border-b-2 border-black pb-2 block mx-auto w-fit">
+          Work Experience
+        </h2>
 
-        <div className="relative mt-12">
-          {/* Timeline line - fixed positioning */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary"></div>
-
-          {/* Mobile timeline line */}
-          <div className="md:hidden absolute left-8 h-full w-1 bg-primary"></div>
-
+        <div className="max-w-4xl mx-auto">
           {experiences.map((exp, idx) => (
             <div
               key={`${exp.company}-${idx}`}
-              className={`relative mb-16 ${
-                idx % 2 === 0
-                  ? "md:pr-12 md:text-right md:mr-auto"
-                  : "md:pl-12 md:ml-auto"
-              } md:w-[45%] ${isVisible ? "animate-slide-up" : "opacity-0"}`}
-              style={{ animationDelay: `${0.2 + idx * 0.1}s` }}
+              className="mb-12 border-l-4 border-black pl-6 relative"
             >
-              {/* Timeline dot - positioned exactly on the timeline for both mobile and desktop */}
-              <div
-                className={`absolute top-6 bg-primary z-10 w-5 h-5 rounded-full border-4 border-white
-                ${
-                  idx % 2 === 0
-                    ? "md:left-[calc(100%+12px)] md:right-auto"
-                    : "md:right-[calc(100%+12px)] md:left-auto"
-                } 
-                left-8 md:translate-x-0 -translate-x-1/2`}
-              ></div>
+              {/* Timeline dot */}
+              <div className="absolute top-0 left-0 w-4 h-4 bg-white border-4 border-black rounded-full -ml-[10px]"></div>
 
-              <div
-                className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow
-                duration-300 border-l-4 border-primary ml-16 md:ml-0 md:border-l-4 ${
-                  idx % 2 === 0 ? "" : ""
-                }`}
-              >
-                <div
-                  className={`flex flex-col ${
-                    idx % 2 === 0 ? "md:items-end" : "md:items-start"
-                  }`}
-                >
-                  <span className="inline-block px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-3">
+              <div className="bg-white p-6 border border-black shadow-sm">
+                <div className="flex justify-between items-start flex-wrap mb-4">
+                  <div>
+                    <h3 className="text-xl font-mono font-bold">{exp.title}</h3>
+                    <p className="font-mono font-medium">{exp.company}</p>
+                    <p className="text-gray-600 font-mono text-sm">
+                      {exp.location}
+                    </p>
+                  </div>
+                  <span className="inline-block px-3 py-1 text-xs font-mono bg-gray-100 border border-black mt-1">
                     {exp.period}
                   </span>
-                  <h3 className="text-xl font-bold">{exp.title}</h3>
-                  <p className="text-primary font-medium">{exp.company}</p>
-                  <p className="text-text-light text-sm mb-4">{exp.location}</p>
+                </div>
 
-                  <ul
-                    className={`list-disc mb-4 ${
-                      idx % 2 === 0
-                        ? "md:ml-0 md:mr-5 md:text-right list-inside md:list-outside"
-                        : "ml-5"
-                    }`}
-                  >
-                    {exp.description.map((item, i) => (
-                      <li
-                        key={i}
-                        className={`mb-2 text-text-light ${
-                          idx % 2 === 0 ? "md:text-right" : ""
-                        }`}
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                <ul className="list-disc ml-5 mb-6">
+                  {exp.description.map((item, i) => (
+                    <li key={i} className="mb-2 font-mono">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
 
-                  <div
-                    className={`flex flex-wrap gap-2 mt-2 ${
-                      idx % 2 === 0 ? "md:justify-end" : ""
-                    }`}
-                  >
+                <div className="border-t border-gray-200 pt-4">
+                  <h4 className="font-mono text-sm mb-2 font-semibold">
+                    TECHNOLOGIES
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-gray-100 text-secondary text-xs font-medium rounded"
+                        className="px-2 py-1 bg-white border border-black text-xs font-mono"
                       >
                         {tech}
                       </span>

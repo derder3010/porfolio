@@ -1,96 +1,79 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-
 export default function About() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentRef = sectionRef.current;
-
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
-
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-accent">
+    <section
+      id="about"
+      className="py-20 bg-white border-t border-b border-black"
+    >
       <div className="container mx-auto px-4">
-        <h2 className="section-heading">About Me</h2>
+        <h2 className="text-3xl font-mono font-bold mb-12 text-center uppercase border-b-2 border-black pb-2 block mx-auto w-fit">
+          About Me
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div
-            className={`${isVisible ? "animate-slide-up" : "opacity-0"}`}
-            style={{ animationDelay: "0.2s" }}
-          >
-            <p className="text-lg mb-6">
-              I&apos;m a Fullstack Developer with a strong focus on building
-              clean, performant, and user-first web applications. My expertise
-              spans across modern frontend frameworks like Nuxt.js, Next.js, and
-              robust backend stacks using FastAPI, Django, and Node.js.
-            </p>
-            <p className="text-lg mb-6">
-              My journey began not just with code, but with curiosity—tinkering
-              with side projects and building tools to automate my workflow.
-              Since then, I&apos;ve developed everything from lightweight CMS
-              platforms to dynamic e-commerce sites, optimizing for both UX and
-              developer experience.
-            </p>
-            <p className="text-lg mb-6">
-              I thrive at the intersection of design and logic—where beautiful
-              interfaces meet powerful APIs. I&apos;m also passionate about
-              performance, accessibility, and staying lean with modern dev
-              tools. Whether I&apos;m debugging a GraphQL resolver or crafting a
-              responsive UI, I bring an eye for detail and a drive to ship
-              quality products.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6">
-              <div>
-                <h3 className="font-bold text-xl mb-2">Education</h3>
-                <p className="mb-1">B.A. in Foreign Language</p>
-                <p className="text-text-light">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start max-w-6xl mx-auto">
+          <div>
+            <div className="prose prose-lg max-w-none">
+              <p className="text-lg mb-6 font-mono leading-relaxed">
+                I&apos;m a{" "}
+                <span className="font-bold">Fullstack Developer</span> with a
+                strong focus on building clean, performant, and user-first web
+                applications. My expertise spans across modern frontend
+                frameworks like{" "}
+                <span className="font-bold">Nuxt.js, Next.js</span>, and robust
+                backend stacks using{" "}
+                <span className="font-bold">FastAPI, Django, and Node.js</span>.
+              </p>
+              <p className="text-lg mb-6 font-mono leading-relaxed">
+                My journey began not just with code, but with
+                <span className="font-bold"> curiosity</span>—tinkering with
+                side projects and building tools to automate my workflow. Since
+                then, I&apos;ve developed everything from lightweight CMS
+                platforms to dynamic e-commerce sites, optimizing for both UX
+                and developer experience.
+              </p>
+              <p className="text-lg mb-6 font-mono leading-relaxed">
+                I thrive at the{" "}
+                <span className="font-bold">
+                  intersection of design and logic
+                </span>
+                —where beautiful interfaces meet powerful APIs. I&apos;m also
+                passionate about
+                <span className="font-bold">
+                  {" "}
+                  performance, accessibility, and staying lean
+                </span>{" "}
+                with modern dev tools. Whether I&apos;m debugging a GraphQL
+                resolver or crafting a responsive UI, I bring an eye for detail
+                and a drive to ship quality products.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+              <div className="border-t-2 border-black pt-4">
+                <h3 className="font-bold text-xl mb-2 font-mono">EDUCATION</h3>
+                <p className="mb-1 font-mono">B.A. in Foreign Language</p>
+                <p className="text-gray-600 font-mono">
                   Van Lang University, 2014-2018
                 </p>
               </div>
-              <div>
-                <h3 className="font-bold text-xl mb-2">Experience</h3>
-                <p className="mb-1">Fullstack Developer</p>
-                <p className="text-text-light">
+              <div className="border-t-2 border-black pt-4">
+                <h3 className="font-bold text-xl mb-2 font-mono">EXPERIENCE</h3>
+                <p className="mb-1 font-mono">Fullstack Developer</p>
+                <p className="text-gray-600 font-mono">
                   Rizerssoft Solutions Inc., 2022-Present
                 </p>
               </div>
             </div>
           </div>
 
-          <div
-            className={`${isVisible ? "animate-slide-up" : "opacity-0"}`}
-            style={{ animationDelay: "0.4s" }}
-          >
-            <div className="bg-white p-8 rounded-lg shadow-lg border-l-4 border-primary">
-              <h3 className="font-bold text-xl mb-4 text-primary">
-                Why Work With Me?
+          <div>
+            <div className="bg-white p-8 border-2 border-black shadow-sm">
+              <h3 className="font-bold text-xl mb-6 font-mono border-b border-black pb-2">
+                WHY WORK WITH ME?
               </h3>
 
-              <ul className="space-y-4">
+              <ul className="space-y-8">
                 <li className="flex items-start">
-                  <div className="mr-4 mt-1 bg-primary p-1 rounded-full text-white">
+                  <div className="mr-4 mt-1 bg-black p-1.5 text-white flex-shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -106,15 +89,18 @@ export default function About() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold">Problem Solver</h4>
-                    <p className="text-text-light">
+                    <h4 className="font-semibold font-mono text-lg mb-1">
+                      PROBLEM SOLVER
+                    </h4>
+                    <p className="text-gray-600 font-mono leading-relaxed">
                       I enjoy tackling complex challenges and finding elegant
-                      solutions.
+                      solutions. My analytical approach allows me to break down
+                      problems and develop effective strategies to solve them.
                     </p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <div className="mr-4 mt-1 bg-primary p-1 rounded-full text-white">
+                  <div className="mr-4 mt-1 bg-black p-1.5 text-white flex-shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -130,15 +116,18 @@ export default function About() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold">Quality-Focused</h4>
-                    <p className="text-text-light">
+                    <h4 className="font-semibold font-mono text-lg mb-1">
+                      QUALITY-FOCUSED
+                    </h4>
+                    <p className="text-gray-600 font-mono leading-relaxed">
                       I ensure clean, maintainable code and excellent user
-                      experiences.
+                      experiences. Every project I work on follows best
+                      practices for performance, accessibility, and security.
                     </p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <div className="mr-4 mt-1 bg-primary p-1 rounded-full text-white">
+                  <div className="mr-4 mt-1 bg-black p-1.5 text-white flex-shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -154,20 +143,23 @@ export default function About() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold">Continuous Learner</h4>
-                    <p className="text-text-light">
+                    <h4 className="font-semibold font-mono text-lg mb-1">
+                      CONTINUOUS LEARNER
+                    </h4>
+                    <p className="text-gray-600 font-mono leading-relaxed">
                       I stay updated with the latest technologies and best
-                      practices.
+                      practices in the rapidly evolving web development
+                      landscape, constantly adding new tools to my repertoire.
                     </p>
                   </div>
                 </li>
               </ul>
 
-              <div className="mt-6">
+              <div className="mt-10 border-t border-black pt-6">
                 <a
                   href="/cv.pdf"
                   download
-                  className=" bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-md transition-colors duration-300 shadow-md hover:shadow-lg flex items-center justify-center max-w-fit"
+                  className="bg-black text-white font-mono py-3 px-6 border-2 border-black hover:bg-gray-900 transition-colors flex items-center justify-center max-w-fit"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +177,7 @@ export default function About() {
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
                   </svg>
-                  Download Resume
+                  DOWNLOAD RESUME
                 </a>
               </div>
             </div>

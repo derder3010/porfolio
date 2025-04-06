@@ -1,7 +1,3 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-
 interface SkillCategory {
   name: string;
   skills: {
@@ -11,9 +7,6 @@ interface SkillCategory {
 }
 
 export default function Skills() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
   const skillCategories: SkillCategory[] = [
     {
       name: "Frontend",
@@ -47,58 +40,36 @@ export default function Skills() {
     },
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentRef = sectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
-
   return (
-    <section id="skills" ref={sectionRef} className="py-20">
+    <section
+      id="skills"
+      className="py-20 bg-gray-100 border-t border-b border-black"
+    >
       <div className="container mx-auto px-4">
-        <h2 className="section-heading">Skills & Expertise</h2>
+        <h2 className="text-3xl font-mono font-bold mb-12 text-center uppercase border-b-2 border-black pb-2 block mx-auto w-fit">
+          Skills & Expertise
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {skillCategories.map((category, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {skillCategories.map((category) => (
             <div
               key={category.name}
-              className={`card ${isVisible ? "animate-slide-up" : "opacity-0"}`}
-              style={{ animationDelay: `${0.2 + idx * 0.1}s` }}
+              className="bg-white p-6 border-2 border-black shadow-sm"
             >
-              <h3 className="text-xl font-bold mb-6 text-primary">
-                {category.name}
+              <h3 className="text-xl font-bold mb-6 font-mono border-b border-black pb-2">
+                {category.name.toUpperCase()}
               </h3>
               <div className="space-y-6">
                 {category.skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-1">
+                  <div key={skill.name} className="font-mono">
+                    <div className="flex justify-between mb-2">
                       <span className="font-medium">{skill.name}</span>
-                      <span className="text-text-light">{skill.level}%</span>
+                      <span className="text-gray-600">{skill.level}%</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-gray-200 h-3 border border-black">
                       <div
-                        className="bg-primary h-2 rounded-full"
-                        style={{
-                          width: isVisible ? `${skill.level}%` : "0%",
-                          transition: "width 1s ease-in-out",
-                        }}
+                        className="bg-black h-full"
+                        style={{ width: `${skill.level}%` }}
                       ></div>
                     </div>
                   </div>
@@ -108,13 +79,10 @@ export default function Skills() {
           ))}
         </div>
 
-        <div
-          className={`mt-16 text-center ${
-            isVisible ? "animate-slide-up" : "opacity-0"
-          }`}
-          style={{ animationDelay: "0.6s" }}
-        >
-          <h3 className="text-2xl font-bold mb-8">My Development Process</h3>
+        <div className="mt-20 text-center max-w-6xl mx-auto">
+          <h3 className="text-2xl font-bold mb-10 font-mono uppercase border-b-2 border-black pb-2 inline-block">
+            My Development Process
+          </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
               {
@@ -204,30 +172,38 @@ export default function Skills() {
                 description: "Test thoroughly and deliver with confidence",
               },
             ].map((step, idx) => (
-              <div key={step.name} className="flex flex-col items-center p-4">
-                <div className="w-16 h-16 flex items-center justify-center bg-primary text-white rounded-full mb-4">
+              <div
+                key={step.name}
+                className="flex flex-col items-center p-6 bg-white border-2 border-black shadow-sm relative"
+              >
+                <div className="w-16 h-16 flex items-center justify-center bg-black text-white mb-5 border border-black">
                   {step.icon}
                 </div>
-                <h4 className="text-lg font-bold mb-2">{step.name}</h4>
-                <p className="text-text-light text-center">
+                <h4 className="text-lg font-bold mb-3 font-mono">
+                  {step.name.toUpperCase()}
+                </h4>
+                <p className="text-gray-600 text-center font-mono">
                   {step.description}
                 </p>
+
                 {idx < 3 && (
-                  <div className="hidden md:block absolute transform translate-x-24">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14"></path>
-                      <path d="M12 5l7 7-7 7"></path>
-                    </svg>
+                  <div className="hidden md:flex absolute -right-4 top-1/2 transform -translate-y-1/2 z-10">
+                    <div className="bg-white w-8 h-8 rounded-full border-2 border-black flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </div>
                   </div>
                 )}
               </div>

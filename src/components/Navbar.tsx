@@ -12,7 +12,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Determine active section based on scroll position
       const sections = document.querySelectorAll("section[id]");
       let currentSection = "home";
 
@@ -40,36 +39,40 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md py-3" : "bg-transparent py-5"
+        isScrolled
+          ? "bg-white border-b border-black py-2"
+          : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-primary font-bold text-2xl">
-            Duy<span className="text-secondary">Tran</span>
+          <span className="font-mono font-bold text-2xl">
+            Duy<span className="text-black">Tran</span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-8">
+        <nav className="hidden md:flex">
           {["home", "about", "skills", "experience", "projects", "contact"].map(
             (section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`nav-link ${
-                  activeSection === section ? "active-nav-link" : ""
+                className={`px-4 py-2 mx-1 font-mono uppercase text-sm ${
+                  activeSection === section
+                    ? "bg-black text-white"
+                    : "hover:bg-gray-100 border border-transparent hover:border-black"
                 }`}
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {section}
               </button>
-            )
+            ),
           )}
         </nav>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-foreground"
+          className="md:hidden border border-black p-1"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? (
@@ -109,8 +112,8 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white shadow-md py-4">
-          <div className="container mx-auto px-4 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-b border-black">
+          <div className="container mx-auto px-4 flex flex-col">
             {[
               "home",
               "about",
@@ -122,11 +125,11 @@ export default function Navbar() {
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`text-left py-2 ${
-                  activeSection === section ? "text-primary" : "text-foreground"
+                className={`text-left py-3 px-2 border-b border-gray-200 font-mono uppercase ${
+                  activeSection === section ? "bg-gray-100 font-bold" : ""
                 }`}
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {section}
               </button>
             ))}
           </div>
