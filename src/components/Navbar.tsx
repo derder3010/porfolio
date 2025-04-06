@@ -47,7 +47,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <span className="font-mono font-bold text-2xl">
-            Duy<span className="text-black">Tran</span>
+            Duy<span className="text-black"> Tran</span>
           </span>
         </Link>
 

@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <span className="text-2xl font-bold font-mono">
-              Duy<span className="text-white">Tran</span>
+              Duy<span className="text-white"> Tran</span>
             </span>
             <p className="mt-2 text-gray-300 max-w-md font-mono">
               Building modern web applications with passion and precision.
