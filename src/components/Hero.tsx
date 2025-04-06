@@ -5,24 +5,13 @@ import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
   return (
     <section
       id="home"
       className="min-h-screen flex flex-col justify-center pt-16 pb-24 bg-white"
     >
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-10">
-        <div
-          className={`w-full md:w-1/2 text-center md:text-left ${
-            isVisible ? "animate-fade-in" : "opacity-0"
-          }`}
-          style={{ animationDelay: "0.2s" }}
-        >
+        <div className="w-full md:w-1/2 text-center md:text-left">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-mono font-bold mb-4">
             Hi, I&apos;m <span className="text-black">Duy Tran</span>
           </h1>
@@ -94,12 +83,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div
-          className={`w-full md:w-1/2 flex justify-center mt-8 md:mt-0 ${
-            isVisible ? "animate-fade-in" : "opacity-0"
-          }`}
-          style={{ animationDelay: "0.4s" }}
-        >
+        <div className="w-full md:w-1/2 flex justify-center mt-8 md:mt-0">
           <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 border-4 border-black">
             <Image
               src="/duytran.jpg"

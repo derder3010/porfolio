@@ -2,17 +2,20 @@ import Link from "next/link";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 bg-white border-t border-black">
-      <div className="container mx-auto px-4">
-        {/* <h2 className="text-3xl font-mono font-bold mb-12 text-center uppercase border-b-2 border-black pb-2 inline-block mx-auto">
-          Get In Touch
-        </h2> */}
+    <section
+      id="contact"
+      className="py-20 bg-gray-100 border-t border-black px-4"
+    >
+      <div className="container mx-auto px-4 border-2 border-black w-fit p-4 bg-white">
+        <h2 className="text-3xl font-mono font-bold mb-12 text-center uppercase border-b-2 border-black pb-2 block mx-auto w-fit">
+          Let&apos;s Talk
+        </h2>
 
         <div className="max-w-3xl mx-auto">
           <div className="mb-10">
-            <h3 className="text-2xl font-bold mb-4 font-mono uppercase border-b border-black pb-2 inline-block">
+            {/* <h3 className="text-2xl font-bold mb-4 font-mono uppercase border-b border-black pb-2 inline-block">
               Let&apos;s Talk
-            </h3>
+            </h3> */}
             <p className="text-gray-600 mb-8 font-mono">
               Have a project in mind or just want to say hello? I&apos;d love to
               hear from you. Feel free to reach out through any of the contact

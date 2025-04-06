@@ -66,7 +66,7 @@ export default function Navbar() {
               >
                 {section}
               </button>
-            ),
+            )
           )}
         </nav>
 
@@ -112,7 +112,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-b border-black">
+        <div className="md:hidden bg-white">
           <div className="container mx-auto px-4 flex flex-col">
             {[
               "home",
@@ -121,13 +121,13 @@ export default function Navbar() {
               "experience",
               "projects",
               "contact",
-            ].map((section) => (
+            ].map((section, index, array) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`text-left py-3 px-2 border-b border-gray-200 font-mono uppercase ${
-                  activeSection === section ? "bg-gray-100 font-bold" : ""
-                }`}
+                className={`text-left py-3 px-2 font-mono uppercase ${
+                  index !== array.length - 1 ? "border-b border-gray-200" : ""
+                } ${activeSection === section ? "bg-gray-100 font-bold" : ""}`}
               >
                 {section}
               </button>
